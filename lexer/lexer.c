@@ -19,6 +19,7 @@ int lexer(FILE *file){
     }
     return 1;
 }
+
 ferror(file);
 fclose(file);
 }
