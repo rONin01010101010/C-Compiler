@@ -1,47 +1,44 @@
 #include "grammar.bnf"
 #include "lexer.c"
 #include <string.h> 
-void parser(char* tokens[]){
-  
-}
+#include <stddef.h>
 
+
+//root node in the AST 
 void program(char* tokens){
-for(int i = 0; i < str_len(tokens); i++){
-    if(tokens[i] == "main"){
-        tokens[i];
+  func(tokens);
+}
+
+
+
+
+void func(char* tokens[]){
+    size_t length = sizeof(tokens) / sizeof(tokens[0]);
+    for(int i = 0; i < length; i++){
+        //base case
+        if(tokens[i] == "return"){
+            statement(tokens);
+        }
+        
+        func(tokens);
     }
 }
-program(tokens);
+
+void statements(char* tokens[]){
+     size_t length = sizeof(tokens) / sizeof(tokens[0]);
+     for(int i = 0; i < length; i++){
+         if(tokens[i] != "return " || tokens[i] != ";"){
+            exp(tokens);
+         } 
+         statements(tokens); 
+     }
+} 
+
+void exp(char* tokens[]){
+    number(tokens);
 }
 
-void function(tokens){
-for(int *i = 0; i < str_len(tokens); i++){
-    if(tokens[i] == "return"){
-        tokens[i];
-        statement(tokens);
-    }
-
-}
-}
-
-
-void statement(tokens){
-for(int *i = 0; i < str_len(tokens); i++){
-    if(tokens[i] != "return" || tokens[i] != ";"){
-        tokens[i];
-        exp(tokens);
-    }
-}
-}
-
-void exp(tokens){
-for(int *i = 0; i < str_len(tokens); i++){
-    if(tokens[i] == "int"){
-        tokens[i];
-    }
-}
-}
-
-int main(){
-    return 0;
+//final stage of main function, less complicated code as program is shorter
+void number(){
+  2; 
 }
