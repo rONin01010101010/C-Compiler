@@ -9,15 +9,12 @@ void program(char* tokens){
   func(tokens);
 }
 
-
-
-
 void func(char* tokens[]){
     size_t length = sizeof(tokens) / sizeof(tokens[0]);
     for(int i = 0; i < length; i++){
         //base case
         if(tokens[i] == "return"){
-            statement(tokens);
+            statements(tokens);
         }
         
         func(tokens);

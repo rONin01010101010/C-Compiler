@@ -25,7 +25,8 @@ fclose(file);
 }
 
 int main(){
-  return 0;
+  
   FILE *file = "../C_Compiler/main.c";
   lexer(file);
+  return 0;
 }
